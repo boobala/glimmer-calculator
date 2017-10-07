@@ -1,3 +1,28 @@
-h1 {
-  color: #444;
+.calculator {
+  width: 250px;
+  .calc-button-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    tr > td {
+      width: 25%;
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+      border-bottom: 1px solid #a0a0a0;
+      border-right: 1px solid #a0a0a0;
+      background-color: #f7f7f7;
+      &:last-child {
+        background-color: #f9812a;
+      }
+    }
+  }
+  .calc-result {
+    font-size: 24px;
+    background-color: #5d5a5a;
+    color: #fff;
+    padding: 20px 10px 10px;
+    text-align: right;
+    min-height: 30px;
+  }
 }

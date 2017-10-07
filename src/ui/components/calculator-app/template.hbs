@@ -1,1 +1,40 @@
-<div><h1>Welcome to Glimmer!</h1></div>
+<div class="calculator">
+  <div class="calc-result">
+    {{result}}
+  </div>
+  <div class="calc-button-group">
+    <table class="calc-button-table">
+      <tbody>
+        <tr>
+          <td onclick={{action clearResult}}>AC</td>
+          <td onclick={{action toggleSign}}>+/-</td>
+          <td onclick={{action execute "%"}}>%</td>
+          <td onclick={{action execute "/"}}>/</td>
+        </tr>
+        <tr>
+          <td onclick={{action execute "7"}}>7</td>
+          <td onclick={{action execute "8"}}>8</td>
+          <td onclick={{action execute "9"}}>9</td>
+          <td onclick={{action execute "*"}}>x</td>
+        </tr>
+        <tr>
+          <td onclick={{action execute "4"}}>4</td>
+          <td onclick={{action execute "5"}}>5</td>
+          <td onclick={{action execute "6"}}>6</td>
+          <td onclick={{action execute "-"}}>-</td>
+        </tr>
+        <tr>
+          <td onclick={{action execute "1"}}>1</td>
+          <td onclick={{action execute "2"}}>2</td>
+          <td onclick={{action execute "3"}}>3</td>
+          <td onclick={{action execute "+"}}>+</td>
+        </tr>
+        <tr>
+          <td colspan="2" onclick={{action execute "0"}}>0</td>
+          <td onclick={{action execute "."}}>.</td>
+          <td onclick={{action showResult}}>=</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
