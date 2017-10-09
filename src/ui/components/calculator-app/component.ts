@@ -4,7 +4,8 @@ export default class Calculator extends Component {
   private expSymbol: Array<string> = [ '+', '-', '/', '*', '%', '='];
   private equalSym: string = '=';
   private _consArr: Array<number> = [];
-  private _opArr: Array<number> = [];
+  private _opArr: Array<string> = [];
+  private _result: number = 0;
   @tracked private result: number = 0;
 
   execute = (input) => {
@@ -15,8 +16,11 @@ export default class Calculator extends Component {
       if(this._opArr.length !== 2) {
         output = this.result;
       }
+      this._result = 0;
     } else {
-      if(this._opArr.length === 0 && this._consArr.length !== 0) {
+      if (this._result) {
+        this.clearResult();
+      } else if(this._opArr.length === 0 && consArr.length !== 0) {
         let lastEle =  consArr.pop();
         input = `${lastEle}${input}`;
       }
@@ -35,6 +39,7 @@ export default class Calculator extends Component {
       this._consArr = [ _output ];
       if(opArr[1] === '=') {
         this._opArr = [];
+        this._result = _output;
       } else {
         this._opArr = [ opArr[1] ];
       }
@@ -56,6 +61,7 @@ export default class Calculator extends Component {
   }
   clearResult = () => {
     this.result = 0;
+    this._result = 0;
     this._consArr = [];
     this._opArr = [];
   }
