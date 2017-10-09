@@ -1,7 +1,7 @@
 import Component, { tracked } from '@glimmer/component';
 
 export default class Calculator extends Component {
-  private expSymbol: Array<string> = [ '+', '-', '/', '*', '%'];
+  private expSymbol: Array<string> = [ '+', '-', '/', '*', '%', '='];
   private equalSym: string = '=';
   private _consArr: Array<number> = [];
   private _opArr: Array<number> = [];
@@ -12,7 +12,9 @@ export default class Calculator extends Component {
     let consArr = this._consArr;
     if(this.expSymbol.indexOf(input) > -1) {
       this._opArr.push(input);
-      output = this.result;
+      if(this._opArr.length !== 2) {
+        output = this.result;
+      }
     } else {
       if(this._opArr.length === 0 && this._consArr.length !== 0) {
         let lastEle =  consArr.pop();
@@ -28,10 +30,14 @@ export default class Calculator extends Component {
     let constArr = this._consArr || [];
     let opArr = this._opArr || [];
     let _output = 0;
-    if(constArr.length === 2 && opArr.length === 1) {
+    if(constArr.length === 2 && opArr.length === 2) {
       _output = this.calculate(constArr, opArr[0]);
       this._consArr = [ _output ];
-      this._opArr = [];
+      if(opArr[1] === '=') {
+        this._opArr = [];
+      } else {
+        this._opArr = [ opArr[1] ];
+      }
     }
     return _output;
   }
@@ -61,12 +67,5 @@ export default class Calculator extends Component {
       _result = Math.abs(_result);
     }
     this.result = _result;
-  }
-  showResult = () => {
-    let _output = this.computeResult();
-    if(_output === 0 ) {
-      _output = this.result;
-    }
-    this.result = _output;
   }
 }
