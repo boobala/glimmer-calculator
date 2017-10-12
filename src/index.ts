@@ -1,5 +1,6 @@
 import App from './main';
 import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
+import initializeCustomElements from '@glimmer/web-component';
 
 const app = new App();
 const containerElement = document.getElementById('app');
@@ -14,6 +15,7 @@ app.registerInitializer({
   }
 });
 
-app.renderComponent('calculator-app', containerElement, null);
+app.renderComponent('glimmer-calculator', containerElement, null);
 
 app.boot();
+initializeCustomElements(app, ['glimmer-calculator']);

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'calculator',
+    modulePrefix: 'glimmer-calculator',
     environment: environment
   };
 
